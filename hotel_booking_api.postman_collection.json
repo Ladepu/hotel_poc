@@ -1,0 +1,92 @@
+{
+  "info": {
+    "name": "Hotel Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Search Hotels",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"destination\\\": \\\"Miami\\\",\\n  \\\"check_in\\\": \\\"2025-11-10\\\",\\n  \\\"check_out\\\": \\\"2025-11-15\\\",\\n  \\\"num_guests\\\": 2\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/search_hotels",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "search_hotels"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book Hotel",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"user_id\\\": \\\"test_user\\\",\\n  \\\"hotel_id\\\": 1,\\n  \\\"destination\\\": \\\"Miami\\\",\\n  \\\"check_in\\\": \\\"2025-11-10\\\",\\n  \\\"check_out\\\": \\\"2025-11-15\\\",\\n  \\\"num_guests\\\": 2,\\n  \\\"total_price\\\": 750\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/book",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "book"
+          ]
+        }
+      }
+    },
+    {
+      "name": "AI Query Parse",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\\n  \\\"text\\\": \\\"Book a 3-star hotel in Miami for 2 adults from 2025-11-10 to 2025-11-15\\\"\\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/ai_query",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "ai_query"
+          ]
+        }
+      }
+    }
+  ]
+}

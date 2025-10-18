@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hotel_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      my_network:
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/hotel_db
+    depends_on:
+      - db
+    #command: ["/bin/bash","-c","./init_db.sh && uvicorn main:app --host 0.0.0.0 --port 8080"]
+    command: ["/bin/bash","-c","uvicorn main:app --host 0.0.0.0 --port 8080"]
+    volumes:
+      - ./backend:/app
+    ports:
+      - '8080:8080'
+    networks:
+      my_network:
+
+networks:
+    my_network:
+volumes:
+  postgres_data:
